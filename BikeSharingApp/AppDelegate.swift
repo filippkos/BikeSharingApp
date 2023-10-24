@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func prepareRootController() {
         let navigationController = UINavigationController()
-        let coordinator = Coordinator(navigationController: navigationController, serviceManager: self.serviceManager())
+        let coordinator = AppCoordinator(navigationController: navigationController, serviceManager: self.serviceManager())
         self.window.rootViewController = navigationController
         self.window.makeKeyAndVisible()
     }
