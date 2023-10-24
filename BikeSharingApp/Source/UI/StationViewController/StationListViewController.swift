@@ -7,12 +7,18 @@
 
 import UIKit
 
+enum StationListViewControllerOutputEvents {
+    case needShowAlert(alertModel: AlertModel)
+}
+
 final class StationListViewController: UIViewController, RootViewGettable, UITableViewDataSource, UITableViewDelegate, LocationReceiveDelegate {
 
     typealias RootView = StationListView
     
     // MARK: -
     // MARK: Variables
+    
+    public var outputEvents: F.VoidFunc<StationListViewControllerOutputEvents>?
 
     private var stations: [Station] = []
     private var refreshControl = UIRefreshControl()
@@ -86,7 +92,7 @@ final class StationListViewController: UIViewController, RootViewGettable, UITab
                         self?.rootView?.tableView?.reloadData()
                     }
                 case .failure(let error):
-                    print(error)
+                    self?.outputEvents?(.needShowAlert(alertModel: AlertModel(error: error)))
                 }
             }
         )

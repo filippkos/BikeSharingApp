@@ -8,6 +8,8 @@
 import Foundation
 import CoreLocation
 
+
+
 protocol LocationReceiveDelegate: AnyObject {
     func receive(location: (Double, Double)?)
 }
@@ -59,7 +61,8 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-         print("error:: \(error.localizedDescription)")
+        
+        print("error:: \(error.localizedDescription)")
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

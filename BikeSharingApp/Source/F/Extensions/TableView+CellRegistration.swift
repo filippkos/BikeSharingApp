@@ -21,6 +21,7 @@ extension UITableView {
         guard let cell = cell else {
             fatalError("this cell type doesn't registered")
         }
+        
         return cell
     }
 }
